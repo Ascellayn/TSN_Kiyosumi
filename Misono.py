@@ -2,7 +2,7 @@ from TSN_Abstracter import TSN_Abstracter, Config, File, Log, Time;
 from typing import Any;
 import httpx, re;
 
-Misono_Version: str = "v0.1";
+Misono_Version: str = "v0.2";
 
 
 Cache_JSON: dict[str | int, Any] = File.JSON_Read("Misono.cache", True);
@@ -29,7 +29,7 @@ def Fetch_Artwork(Pixiv_ID: str) -> dict[str, str] | None:
 		"Author_ID": Response.json()["author_id"],
 		"Date": Time.Convert_Datetime(Time.Convert_ISO8601(Response.json()["create_date"])),
 		"NSFW": True if (Response.json()["x_restrict"] == 1) else False,
-		"AI": Response.json()["ai_generated"],
+		"AI": True if (Response.json()["ai_generated"]) else any(AI_Tag in Response.json()["tags"] for AI_Tag in ["AI-assisted", "aI-generated illustration"]),
 		"Tags": [Tag[1:] for Tag in Response.json()["tags"]], # Remove extra "#" at the beginning
 		"Images": Response.json()["image_proxy_urls"],
 	};
