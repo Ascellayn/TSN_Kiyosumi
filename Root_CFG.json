@@ -2,7 +2,11 @@
 	"HTML_Folder": "Output",
 	"Stash_Folder": "ilikeyaemiko",
 	"Templates": {
-		"Page": "Templates/Page.html",
-		"Artwork": "Templates/Artwork.html"
+		"Embed_Artwork": "Templates/Embed_Artwork.html",
+		"Embed_Source": "Templates/Embed_Source.html",
+		"Embed_Character": "Templates/Embed_Source.html",
+		"Browser_Character": "Templates/Browser_Character.html",
+		"Browser_Source": "Templates/Browser_Source.html",
+		"Page": "Templates/Page.html"
 	}
 }
