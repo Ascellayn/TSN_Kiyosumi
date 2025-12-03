@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html SNDL-Theme="Light" lang="en">
 	<head>
-		<title>{} - Ascellayn's Artwork Stash</title>
+		<title>{Source_Name} | Ascellayn's Artwork Stash</title>
 		<!-- Misc-->
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="height=device-height, width=device-width, initial-scale=0.75"/>
@@ -16,7 +16,7 @@
 		<meta content="Ascellayn" name="author"/>
 		<meta content="The Sirio Network, Sirio Network, TSN, Ascellayn, {Source_Characters}" name="keywords"/>
 		<!-- Embed -->
-		<meta content="Ascellayn's Artwork Stash" property="og:title"/>
+		<meta content="{Source_Name} | Ascellayn's Artwork Stash" property="og:title"/>
 		<meta content="Ever wanting to roast the {Source_Name} artworks Ascellayn likes? Well, got some news for ya." property="og:description"/>
 		<meta content="https://sirio-network.com/Root/sirio_network-banner.png" property="og:image"/>
 		<meta content="#FFFAFF" data-react-helmet="true" name="theme-color"/>
@@ -28,8 +28,26 @@
 		<div id="Background"></div>
 		<div id="Root">
 			<div id="Base">
+				<div class="SNDL-Contain_Themed">
+					<div class="SNDL-Bannermage">
+						<img src="{Source_Image}">
+						<div SNDL-Theme="Light">
+							<h1>{Source_Name} Artworks</h1>
+							<p>{Source_Description}</p>
+						</div>
+					</div>
+					<spacer></spacer>
+					<div>
+						<a class="SNDL-Button" href="../browser.html">Return to all Artworks</a>
+					</div>
+				</div>
+
 {TSN_Misono}
+
 			</div>
+		</div>
+		<div id="3000" class="SNJS-Copyright">
+			<p>{TSN_Misono-Legal}</p>
 		</div>
 	</body>
 </html>
