@@ -1,5 +1,8 @@
 {
 	"HTML_Folder": "Output",
-	"HTML_Template": "Template.html",
-	"Stash_Folder": "ilikeyaemiko"
+	"Stash_Folder": "ilikeyaemiko",
+	"Templates": {
+		"Page": "Templates/Page.html",
+		"Artwork": "Templates/Artwork.html"
+	}
 }
