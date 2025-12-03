@@ -3,7 +3,7 @@ from typing import Any;
 
 def Update_Cache() -> None:
 	Cache_JSON: dict[str | int, Any] = File.JSON_Read("Misono.cache", True);
-	File.JSON_Write(f"Misono_v0.1-{Time.Get_Unix()}.cache_backup", Cache_JSON, True);
+	File.JSON_Write(f"Cache_Updaters/Backups/Misono_v0.1-{Time.Get_Unix()}.cache_backup", Cache_JSON, True);
 
 	Log.Stateless(f"TSN Misono - v0.1 Cache to v0.2 Cache Updater");
 
