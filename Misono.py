@@ -2,10 +2,16 @@ from TSN_Abstracter import TSN_Abstracter, Config, File, Log, Time;
 from typing import Any;
 import httpx, re;
 
-Misono_Version: str = "v0.2";
 
 
+
+
+Misono_Version: str = "v0.3_dev";
 Cache_JSON: dict[str | int, Any] = File.JSON_Read("Misono.cache", True);
+
+
+def Pixiv_Artist(Artist_ID: int) -> str: return f"https://www.pixiv.net/en/users/{Artist_ID}";
+def Pixiv_Artwork(Artwork_ID: int) -> str: return f"https://www.pixiv.net/en/artworks/{Artwork_ID}";
 
 def Fetch_Artwork(Pixiv_ID: str) -> dict[str, str] | None:
 	global Cache_JSON;
@@ -41,10 +47,17 @@ def Fetch_Artwork(Pixiv_ID: str) -> dict[str, str] | None:
 
 	return JSON;
 
+
+
+
+
+
 if (__name__ == "__main__"):
 	Log.Clear(); TSN_Abstracter.Require_Version((5,3,1));
 	Config.Logger.File = False;
 	Log.Stateless(f"TSN Misono - {Misono_Version}");
+
+
 
 	# Config Validation
 	Log.Info("Loading Configuration...");
@@ -53,15 +66,28 @@ if (__name__ == "__main__"):
 	HTML_Folder: str | None = Root_CFG.get("HTML_Folder");
 	if (not HTML_Folder): Log.Awaited().ERROR("Root_CFG → HTML_Folder is null."); exit();
 
-	HTML_Template: str | None = Root_CFG.get("HTML_Template");
-	if (not HTML_Template): Log.Awaited().ERROR("Root_CFG → HTML_Template is null."); exit();
-	if (not File.Exists(HTML_Template)): Log.Awaited().ERROR("HTML_Template → File Not Found"); exit();
 
 	Stash_Folder: str | None = Root_CFG.get("Stash_Folder");
 	if (not Stash_Folder): Log.Awaited().ERROR("Root_CFG → Stash_Folder is null."); exit();
 	if (not File.Exists(Stash_Folder)): Log.Awaited().ERROR("Stash_Folder → Folder Not Found"); exit();
 
+
+	Templates: dict[str, int | Any] | None = Root_CFG.get("Templates");
+	if (not Templates): Log.Awaited().ERROR("Root_CFG → Templates is null."); exit();
+
+	Template_Page: str | int | None = Templates.get("Page");
+	if (not Template_Page): Log.Awaited().ERROR("Templates → Page is null."); exit();
+	if (type(Template_Page) != str): Log.Awaited().ERROR("Templates → Page is not a string."); exit();
+	if (not File.Exists(Template_Page)): Log.Awaited().ERROR("Page → File Not Found"); exit();
+
+	Template_Artwork: str | int | None = Templates.get("Artwork");
+	if (not Template_Artwork): Log.Awaited().ERROR("Templates → Artwork is null."); exit();
+	if (type(Template_Artwork) != str): Log.Awaited().ERROR("Templates → Page is not a string."); exit();
+	if (not File.Exists(Template_Artwork)): Log.Awaited().ERROR("Artwork → File Not Found"); exit();
+
 	Log.Awaited().OK();
+
+
 
 	# PoC Stash Seeker
 	Log.Info("Analyzing Stash...");
@@ -69,8 +95,9 @@ if (__name__ == "__main__"):
 	Log.Awaited().OK();
 	Stash_JSON: dict[str | int, Any] = {};
 	
+	# Source Folder
 	for Source in Stash_Tree[0]:
-		#Log.Info(f"Processing: {Source[0]}");
+		# Character Folder
 		for Character_Matrix in Source[1][0]:
 			Character_Folder: str = Character_Matrix[0];
 
@@ -81,6 +108,9 @@ if (__name__ == "__main__"):
 
 			Character_Name: str = Character_Folder.replace(f" ({Character_Tag})","");
 
+
+
+			# Artwork File
 			for Artworks in Character_Matrix[1]:
 				for Artwork in Artworks:
 					Artwork_File: str = str(Artwork); # Shush big typing.
