@@ -16,6 +16,7 @@ def Misono() -> None:
 	# Source Folder
 	HTML_eSource: list[str] = [];
 	for Source in Stash_Tree[0]:
+		if (Source[0] in Exclude_Source): Log.Error(f"{Source[0]} → EXCLUDED"); continue;
 		# Character Folder
 		HTML_eCharacter: list[str] = [];
 		for Character_Matrix in Source[1][0]:
@@ -27,8 +28,8 @@ def Misono() -> None:
 			del character_match;
 
 			Character_Name: str = Character_Folder.replace(f" ({Character_Tag})","");
-
-
+			if (Character_Name in Exclude_Character): Log.Error(f"{Source[0]}/{Character_Name} → EXCLUDED"); continue;
+			if (Character_Tag in Exclude_Tag): Log.Error(f"{Source[0]}/{Character_Name}/{Character_Tag} → EXCLUDED"); continue;
 
 			# Artwork File
 			HTML_eArtwork: list[str] = [];
@@ -109,6 +110,7 @@ def Misono() -> None:
 
 		# Browser Character Compilation
 		Browser_Character: str = f"{Folder_Output}/{Source[0].replace(" ", "_")}/Browser.html";
+		if (len(HTML_eCharacter) < 1): continue;
 		Log.Info(f"Building Character Browser: {Browser_Character}...");
 		try:
 			File.Path_Require(Browser_Character);
@@ -136,6 +138,7 @@ def Misono() -> None:
 
 	# Browser Source Compilation
 	Browser_Source: str = f"{Folder_Output}/Browser.html";
+	if (len(HTML_eSource) < 1): Log.Critical(f"Found NOTHING to showcase!"); exit();
 	Log.Info(f"Building Source Browser: {Browser_Source}...");
 	try:
 		File.Path_Require(Browser_Source);

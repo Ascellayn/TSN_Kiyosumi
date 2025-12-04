@@ -8,5 +8,10 @@
 		"Embed_Artwork": "Templates/Embed_Artwork.html",
 		"Embed_Character": "Templates/Embed_Character.html",
 		"Embed_Source": "Templates/Embed_Source.html"
+	},
+	"Exclude": {
+		"Tag": ["NSFW"],
+		"Character": [],
+		"Source": []
 	}
 }
