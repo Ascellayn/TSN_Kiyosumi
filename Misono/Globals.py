@@ -1,19 +1,30 @@
 from TSN_Abstracter import TSN_Abstracter, Config, File, Log, Time; # pyright: ignore[reportUnusedImport]
 from typing import Any;
-import httpx, random, re; # pyright: ignore[reportUnusedImport]
+import dotenv, httpx, os, random, re; # pyright: ignore[reportUnusedImport]
+dotenv.load_dotenv();
 
 
 
-Misono_Version: str = "v0.4";
+Misono_Version: str = "v0.5";
 Cache_JSON: dict[str | int, Any] = File.JSON_Read("Misono.cache", True);
+if (Cache_JSON == {}):
+	Cache_JSON = {
+		"Misono": {
+			"Version": "v0.5",
+			"Updated": Time.Get_Unix()
+		},
+		"Abstracts": {},
+		"Artworks": {}
+	}
 
-
+Cookie: str | None = os.getenv("Cookie");
+Browser_Data: dict[str, Any] = {};
 
 
 
 # TSNA & Config Validation
 Log.Clear(); TSN_Abstracter.Require_Version((5,4,0));
-Config.Logger.File = False;
+Config.Logger.File = False; #Config.Logger.Print_Level = 15;
 Log.Stateless(f"TSN Misono - {Misono_Version}");
 
 
@@ -59,3 +70,8 @@ del Root_CFG; del Templates;
 # ↑ Baby's manual memory management
 
 Log.Awaited().OK();
+
+if (not Cookie):
+	Log.Critical("A Pixiv Cookie was not defined in your .env! Abstracts may not get properly fetched.\n\
+TSN Misono will keep executing after 30 seconds. We however still heavily recommend to stop Misono to configure your Cookie.");
+	Time.time.sleep(30);
