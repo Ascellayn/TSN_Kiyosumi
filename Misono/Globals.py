@@ -5,12 +5,12 @@ dotenv.load_dotenv();
 
 
 
-Misono_Version: str = "v0.5";
+Misono_Version: str = "v0.6";
 Cache_JSON: dict[str | int, Any] = File.JSON_Read("Misono.cache", True);
 if (Cache_JSON == {}):
 	Cache_JSON = {
 		"Misono": {
-			"Version": "v0.5",
+			"Version": "v0.6",
 			"Updated": Time.Get_Unix()
 		},
 		"Abstracts": {},

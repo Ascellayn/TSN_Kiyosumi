@@ -14,8 +14,10 @@ def Misono() -> None:
 
 
 	# Source Folder
+	HTML_eSource: list[str] = [];
 	for Source in Stash_Tree[0]:
 		# Character Folder
+		HTML_eCharacter: list[str] = [];
 		for Character_Matrix in Source[1][0]:
 			Character_Folder: str = Character_Matrix[0];
 
@@ -29,7 +31,7 @@ def Misono() -> None:
 
 
 			# Artwork File
-			Artworks_HTML: list[str] = [];
+			HTML_eArtwork: list[str] = [];
 
 			if (Source[0] not in Browser_Data.keys()): Browser_Data[Source[0]] = {};
 			if (Character_Name not in Browser_Data[Source[0]].keys()): Browser_Data[Source[0]][Character_Name] = {};
@@ -64,8 +66,8 @@ def Misono() -> None:
 					for Tag in Artwork["Tags"]: Browser_Data[Source[0]][Character_Name][Character_Tag]["Tags"].add(Tag);
 
 
-					# Embed Compilation
-					Artworks_HTML.append(
+					# Artwork Embed Compilation
+					HTML_eArtwork.append(
 						HTML_Compiler(
 							Template_eArtwork,
 							[], Artwork,
@@ -76,25 +78,75 @@ def Misono() -> None:
 
 					Log.Awaited().OK();
 
-			# Page Compilation
-			HTML_File_Name: str = Stash_File(Source[0], Character_Name, Character_Tag);
-			if (len(Artworks_HTML) < 1): continue;
-			Log.Info(f"Building Artwork Browser: {HTML_File_Name}...");
+			# Browser Artwork Compilation
+			Browser_Artwork: str = Stash_File(Source[0], Character_Name, Character_Tag);
+			if (len(HTML_eArtwork) < 1): continue;
+			Log.Info(f"Building Artwork Browser: {Browser_Artwork}...");
 			try:
-				File.Path_Require(HTML_File_Name);
+				File.Path_Require(Browser_Artwork);
 				File.Write(
-					HTML_File_Name,
+					Browser_Artwork,
 					HTML_Compiler(
 						Template_bArtwork,
-						sorted(Artworks_HTML), None,
-						Source[0], Character_Name, Character_Tag,
-						None, None
+						sorted(HTML_eArtwork), None,
+						Source[0], Character_Name, Character_Tag
 					)
 				);
 				Log.Awaited().OK();
 			except Exception as Except: Log.Awaited().EXCEPTION(Except); raise Except;
 
-	# Browser Compilation: TBD
-	#HTML_Links: list[str] = [];
+			# Character Embed Compilation
+			HTML_eCharacter.append(
+				HTML_Compiler(
+					Template_eCharacter,
+					[], None,
+					Source[0], Character_Name, Character_Tag
+				)
+			);
+
+			Log.Awaited().OK();
+
+
+		# Browser Character Compilation
+		Browser_Character: str = f"{Folder_Output}/{Source[0].replace(" ", "_")}/Browser.html";
+		Log.Info(f"Building Character Browser: {Browser_Character}...");
+		try:
+			File.Path_Require(Browser_Character);
+			File.Write(
+				Browser_Character,
+				HTML_Compiler(
+					Template_bCharacter,
+					sorted(HTML_eCharacter), None,
+					Source[0]
+				)
+			);
+			Log.Awaited().OK();
+		except Exception as Except: Log.Awaited().EXCEPTION(Except); raise Except;
+
+
+
+		# Source Embed Compilation
+		HTML_eSource.append(
+			HTML_Compiler(
+				Template_eSource,
+				[], None,
+				Source[0],
+			)
+		);
+
+	# Browser Source Compilation
+	Browser_Source: str = f"{Folder_Output}/Browser.html";
+	Log.Info(f"Building Source Browser: {Browser_Source}...");
+	try:
+		File.Path_Require(Browser_Source);
+		File.Write(
+			Browser_Source,
+			HTML_Compiler(
+				Template_bSource,
+				sorted(HTML_eSource), None
+			)
+		);
+		Log.Awaited().OK();
+	except Exception as Except: Log.Awaited().EXCEPTION(Except); raise Except;
 
 if (__name__ == "__main__"): Misono();
