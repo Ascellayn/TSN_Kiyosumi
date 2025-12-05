@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="/SNDL/css/main.css">
 		<!-- SNJS / Webpage Arguments -->
 		<script>const Awaited_Objects = ["SNJS_Navigation"];</script>
-		<script src="/SNDL/js/main.js"></script>
+		<script type="module" src="/SNDL/js/main.mjs"></script>
 
 		<!-- SEO -->
 		<meta content="Ever wanting to roast the {Source_Name} artworks Ascellayn likes? Well, got some news for ya." name="description"/>
@@ -26,11 +26,12 @@
 	</head>
 	<body>
 		<div id="Background"></div>
+		<div id="Floating"></div>
 		<div id="Root">
 			<div id="Base">
 				<div class="SNDL-Contain_Themed">
 					<div class="SNDL-Bannermage">
-						<img src="{Source_Image}">
+						<img src="../Banner-{Source_NameHTML}.png">
 						<div SNDL-Theme="Light">
 							<h1>{Source_Name} Artworks</h1>
 							<p>{Source_Description}</p>
@@ -41,14 +42,14 @@
 					</div>
 					<spacer></spacer>
 					<div>
-						<a class="SNDL-Button" href="../Browser.html">Return to all Artworks</a>
+						<a class="SNDL-Button" href="../Browser.html"><h4>Return to all Artworks</h4></a>
 					</div>
 				</div>
 <div class="Misono_Contain">
 {TSN_Misono}
 </div>
 			</div>
-			<div id="3000" class="SNJS-Copyright">
+			<div id="3000" class="SNJS_Copyright">
 				<p>{Misono_Legal}</p>
 			</div>
 		</div>

@@ -1,11 +1,11 @@
-from TSN_Abstracter import TSN_Abstracter, Config, File, Log, Time; # pyright: ignore[reportUnusedImport]
+from TSN_Abstracter import TSN_Abstracter, Config, File, Log, Time; # pyright: ignore[reportMissingTypeStubs, reportUnusedImport]
 from typing import Any;
 import dotenv, httpx, os, random, re; # pyright: ignore[reportUnusedImport]
 dotenv.load_dotenv();
 
 
 
-Misono_Version: str = "v0.7";
+Misono_Version: str = "v0.7.1";
 Cache_JSON: dict[str | int, Any] = File.JSON_Read("Misono.cache", True);
 if (Cache_JSON == {}):
 	Cache_JSON = {

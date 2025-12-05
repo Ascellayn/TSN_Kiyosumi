@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="/SNDL/css/main.css">
 		<!-- SNJS / Webpage Arguments -->
 		<script>const Awaited_Objects = ["SNJS_Navigation"];</script>
-		<script src="/SNDL/js/main.js"></script>
+		<script type="module" src="/SNDL/js/main.mjs"></script>
 
 		<!-- SEO -->
 		<meta content="Ever wondered what kind of artworks of {Character_Name} (well the {Character_Tag} ones) Ascellayn has saved? Well check this page out!" name="description"/>
@@ -26,6 +26,7 @@
 	</head>
 	<body>
 		<div id="Background"></div>
+		<div id="Floating"></div>
 		<div id="Root">
 			<div id="Base">
 				<div class="SNDL-Contain_Themed">
@@ -36,15 +37,15 @@
 					</div>
 					<spacer></spacer>
 					<div>
-						<a class="SNDL-Button" href="Browser.html">Return to all {Source_Name} Artworks</a>
-						<a class="SNDL-Button" href="../Browser.html">Return to all Artworks</a>
+						<a class="SNDL-Button" href="Browser.html"><h4>Return to all {Source_Name} Artworks</h4></a>
+						<a class="SNDL-Button" href="../Browser.html"><h4>Return to all Artworks</h4></a>
 					</div>
 				</div>
 <div class="Misono_Contain">
 {TSN_Misono}
 </div>
 			</div>
-			<div id="3000" class="SNJS-Copyright">
+			<div id="3000" class="SNJS_Copyright">
 				<p>{Misono_Legal}</p>
 			</div>
 		</div>

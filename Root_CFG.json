@@ -12,6 +12,6 @@
 	"Exclude": {
 		"Tag": ["NSFW"],
 		"Character": [],
-		"Source": []
+		"Source": ["League of Legends", "Original Characters", "Other Characters", "Sewayaki Kitsune no Senko-san", "Touhou"]
 	}
 }

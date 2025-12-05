@@ -30,7 +30,7 @@ def HTML_Compiler(
 .replace("{Artwork_URL}", Pixiv_Artwork(Pixiv_ID) if (Pixiv_ID) else "")\
 .replace("{Artwork_Tags}", ", ".join(["#" + Tag for Tag in Artwork["Tags"]]) if (Artwork) else "")\
 .replace("{Artwork_Date}", " ".join(Time.Get_DateStrings(Artwork["Date"]) if (Artwork) else ""))\
-.replace("{Artwork_Random}", Browser_Data[Source_Name][Character_Name][Character_Tag]["Artworks"][random.randint(0, len(Browser_Data[Source_Name][Character_Name][Character_Tag]["Artworks"]) - 1)] if (Full and Source_Name) else "")\
+.replace("{Artwork_Random}", Browser_Data[Source_Name][Character_Name][Character_Tag]["Artworks"][random.randint(0, len(Browser_Data[Source_Name][Character_Name][Character_Tag]["Artworks"]) - 1)].replace(".mp4", ".gif") if (Full and Source_Name) else "")\
 .replace("{Artwork_Total}", str(Artwork_Total))\
 \
 .replace("{Artist_Name}", Artwork["Author_Name"] if (Artwork) else "")\
@@ -50,7 +50,7 @@ def HTML_Compiler(
 .replace("{Source_Character}", ", ".join(Browser_Data[Source_Name].keys()) if (Source_Name) else "")\
 .replace("{Source_All}", ", ".join(Browser_Data.keys()))\
 .replace("{Source_Browser}", f"{Source_Name.replace(" ", "_")}/Browser.html" if (Source_Name) else "")\
-.replace("{Source_Image}", f"{Source_Name}/Source_Image.jpg" if (Source_Name) else "")\
+.replace("{Source_NameHTML}", f"{Source_Name.replace(" ", "_")}" if (Source_Name) else "")\
 \
 .replace("{TSN_Misono}", "\n<br>\n".join(Embeds))\
 .replace("{Misono_Version}", Misono_Version)\
