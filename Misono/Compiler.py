@@ -22,6 +22,11 @@ def HTML_Compiler(
 			Character_All.append(Character);
 			for Tag in Browser_Data[Source_Name][Character]:
 				Source_Total += len(Browser_Data[Source_Name][Character][Tag]["Artworks"]);
+	else:
+		for Source in Browser_Data.keys():
+			for Character in Browser_Data[Source]:
+				for Tag in Browser_Data[Source][Character]:
+					Source_Total += len(Browser_Data[Source][Character][Tag]["Artworks"]);
 
 	return HTML\
 .replace("{Artwork_Image}", Artwork["Images"][Pixiv_sID].replace(".mp4", ".gif") if (Artwork) else "")\

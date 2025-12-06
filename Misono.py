@@ -89,7 +89,7 @@ def Misono() -> None:
 					Browser_Artwork,
 					HTML_Compiler(
 						Template_bArtwork,
-						sorted(HTML_eArtwork), None,
+						sorted(HTML_eArtwork, reverse=True), None,
 						Source[0], Character_Name, Character_Tag
 					)
 				);
@@ -146,7 +146,7 @@ def Misono() -> None:
 			Browser_Source,
 			HTML_Compiler(
 				Template_bSource,
-				sorted(HTML_eSource), None
+				sorted(HTML_eSource, reverse=True), None
 			)
 		);
 		Log.Awaited().OK();
