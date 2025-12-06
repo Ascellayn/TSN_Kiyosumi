@@ -31,15 +31,20 @@
 		<div id="Root">
 			<div id="Base">
 				<div class="SNDL-Contain_Themed">
-					<h1>{Character_Name} ({Character_Tag}) Artworks</h1>
-					<p>{Character_Description}</p>
-					<div class="SNDL-Source">
-						<p>A grand total of {Artwork_Total} artworks have been stashed.</p>
+					<div class="SNDL-Flex_Start">
+						<img style="max-width: 128px;" class="SNDL-Image" src="{Artwork_Random}">
+						<div>
+							<h1>{Character_Name} ({Character_Tag}) Artworks</h1>
+							<p>{Character_Description}</p>
+							<div class="SNDL-Quote SNC-Cyan">
+								<p>A grand total of {Artwork_Total} artworks have been stashed.</p>
+							</div>
+						</div>
 					</div>
 					<spacer></spacer>
-					<div>
-						<a class="SNDL-Button" href="Browser.html"><h4>Return to all {Source_Name} Artworks</h4></a>
-						<a class="SNDL-Button" href="../Browser.html"><h4>Return to all Artworks</h4></a>
+					<div class="SNDL-Flex_Center">
+						<a style="max-width: 45%;" class="SNDL-Button" href="Browser.html"><h4>Return to all {Source_Name} Artworks</h4></a>
+						<a style="max-width: 45%;" class="SNDL-Button" href="../Browser.html"><h4>Return to all Artworks</h4></a>
 					</div>
 				</div>
 				<br>

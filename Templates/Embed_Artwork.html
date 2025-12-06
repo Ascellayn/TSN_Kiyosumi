@@ -1,14 +1,14 @@
 <!--{Artwork_Date}-->
-<div class="Misono-Embed_Artwork">
-	<a href="{Artwork_URL}" target="_blank"><img class="SNDL-Image" src="{Artwork_Image}"></a>
+<div id="{Pixiv_ID}_p{Pixiv_sID}" class="Misono-Embed_Artwork">
+	<div><a href="{Artwork_URL}" target="_blank"><img class="SNDL-Image" src="{Artwork_Image}"></a></div>
 	<spacer></spacer>
 	<div>
-		<h2><a href="{Artwork_URL}" target="_blank">{Artwork_Title}</a> by <a href="{Artist_URL}" target="_blank">{Artist_Name}</a></h2>
+		<h2><a href="{Artwork_URL}" target="_blank">{Artwork_Title}</a> (N°{Pixiv_sID}) by <a href="{Artist_URL}" target="_blank">{Artist_Name}</a></h2>
 		<p>{Artwork_Description}</p>
 	</div>
 	<spacer></spacer>
 	<p>{Artwork_Tags}</p>
 	<div class="SNDL-Source">
-		<p>Artwork posted on {Artwork_Date}</p>
+		<p>Artwork posted on {Artwork_Date} | ID: {Pixiv_ID}_p{Pixiv_sID}</p>
 	</div>
 </div>

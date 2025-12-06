@@ -37,6 +37,7 @@ def HTML_Compiler(
 .replace("{Artwork_Date}", " ".join(Time.Get_DateStrings(Artwork["Date"]) if (Artwork) else ""))\
 .replace("{Artwork_Random}", Browser_Data[Source_Name][Character_Name][Character_Tag]["Artworks"][random.randint(0, len(Browser_Data[Source_Name][Character_Name][Character_Tag]["Artworks"]) - 1)].replace(".mp4", ".gif") if (Full and Source_Name) else "")\
 .replace("{Artwork_Total}", str(Artwork_Total))\
+.replace("{Artwork_Total-Padded}", String.Trailing_Zero(Artwork_Total, 9))\
 \
 .replace("{Artist_Name}", Artwork["Author_Name"] if (Artwork) else "")\
 .replace("{Artist_URL}", Pixiv_Artist(Artwork["Author_ID"]) if (Artwork) else "")\
@@ -63,5 +64,5 @@ def HTML_Compiler(
 \
 \
 \
-.replace("{Pixiv_ID}", Pixiv_ID if (Pixiv_ID) else "")\
-.replace("{Pixiv_sID}", str(Pixiv_sID) if (Pixiv_sID) else "")
+.replace("{Pixiv_sID}", str(Pixiv_sID) if (Pixiv_sID != None) else "")\
+.replace("{Pixiv_ID}", Pixiv_ID if (Pixiv_ID) else "")

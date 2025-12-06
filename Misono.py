@@ -60,7 +60,7 @@ def Misono() -> None:
 					Artwork: dict[str | int, Any] | None = Fetch_Artwork(Pixiv_ID);
 					if (not Artwork): Log.Error(f"{Source[0]}/{Character_Name}/{Character_Tag}/{Artwork_File} → IGNORED | Could not fetch Artwork Details."); continue;
 					if (not Artwork["Fetched"]): Log.Error(f"{Source[0]}/{Character_Name}/{Character_Tag}/{Artwork_File} → IGNORED | Artwork no longer exists."); continue;
-					if (Pixiv_sID > (len(Artwork["Images"]) - 1)):  Log.Error(f"{Source[0]}/{Character_Name}/{Character_Tag}/{Artwork_File} → IGNORED | Pixiv_sID is larger than proxied images: {Pixiv_sID}"); continue;
+					if (Pixiv_sID > (len(Artwork["Images"]) - 1)): Log.Error(f"{Source[0]}/{Character_Name}/{Character_Tag}/{Artwork_File} → IGNORED | Pixiv_sID is larger than proxied images: {Pixiv_sID}"); continue;
 
 
 					Browser_Data[Source[0]][Character_Name][Character_Tag]["Artworks"].append(Artwork["Images"][Pixiv_sID]);
@@ -89,7 +89,7 @@ def Misono() -> None:
 					Browser_Artwork,
 					HTML_Compiler(
 						Template_bArtwork,
-						sorted(HTML_eArtwork, reverse=True), None,
+						sorted(HTML_eArtwork), None,
 						Source[0], Character_Name, Character_Tag
 					)
 				);
@@ -118,7 +118,7 @@ def Misono() -> None:
 				Browser_Character,
 				HTML_Compiler(
 					Template_bCharacter,
-					sorted(HTML_eCharacter), None,
+					sorted(HTML_eCharacter, reverse=True), None,
 					Source[0]
 				)
 			);
