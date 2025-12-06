@@ -7,5 +7,12 @@ TSN "Misono" is a currently extremely simple [TSNA-Based](https://github.com/Asc
 
 
 > [!WARNING]
-> TSN Misono does a RIDICULOUS amounts of API Requests to Phixiv in order to get Proxied URLs to properly show previews on the resulting pages.
+> TSN Misono does a RIDICULOUS amounts of API Requests to Phixiv and Pixiv in order to get Source/Character Descriptions and Proxied URLs to properly show previews on the resulting pages.
 > So... Please be kind and don't run this script an obscenely huge stash. TSN Misono does automatically cache requests inside `Misono.cache` in a futile attempt to avoid further API Spam, so do not delete that file it's very important.
+
+We recommend providing Misono with a `.env` containing your Pixiv cookie, not having your token for Pixiv will result in far worse descriptions! (Seems like Pixiv silently locks down those...)  
+
+## Dependencies
+- [TSN_Abstracter v5.4.0 (or above)](https://github.com/Ascellayn/TSN_Abstracter)
+- python3-httpx
+- python3-re
