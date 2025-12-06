@@ -11,7 +11,7 @@ def Misono() -> None:
 	Stash_Tree: File.Folder_Tree = File.Tree(Folder_Stash);
 	Log.Awaited().OK(f"took {Time.Elapsed_String(Time.Get_Unix() - T_Init, ":")}");
 
-
+	Invalids: dict[str | int, Any] = { "AI": [], "Deleted": [], "Larger_sID": [], "Invalid_ID": [], "Invalid_sID": [], "Tag_Error": []};
 
 	# Source Folder
 	HTML_eSource: list[str] = [];
@@ -24,7 +24,7 @@ def Misono() -> None:
 
 			character_match: re.Match[str] | None = re.search(pattern=r"(?<= \().+(?=\))", string=Character_Folder);
 			Character_Tag: str | None = character_match[0] if (character_match) else None;
-			if (not Character_Tag): Log.Error(f"{Source[0]}/{Character_Folder} → IGNORED: Tag not in Folder Name."); continue;
+			if (not Character_Tag): Invalids["Tag_Error"].append(f"{Source[0]}/{Character_Folder}"); Log.Error(f"{Source[0]}/{Character_Folder} → IGNORED: Tag not in Folder Name."); continue;
 			del character_match;
 
 			Character_Name: str = Character_Folder.replace(f" ({Character_Tag})","");
@@ -44,24 +44,25 @@ def Misono() -> None:
 			for Artworks in Character_Matrix[1]:
 				for Artwork_Raw in Artworks:
 					Artwork_File: str = str(Artwork_Raw); # Shush big typing.
+					Artwork_Full: str= f"{Source[0]}/{Character_Name}/{Character_Tag}/{Artwork_File}";
 
 					pixiv_id: re.Match[str] | None = re.search(pattern=r"\d+(?=_p)", string=Artwork_File);
 					Pixiv_ID: str | None = pixiv_id[0] if (pixiv_id) else None;
-					if (not Pixiv_ID): Log.Error(f"{Source[0]}/{Character_Name}/{Character_Tag}/{Artwork_File} → IGNORED | Invalid PixivID."); continue;
+					if (not Pixiv_ID): Invalids["Invalid_ID"].append(Artwork_Full); Log.Error(f"{Artwork_Full} → IGNORED | Invalid PixivID."); continue;
 					del pixiv_id;
 
 					pixiv_sid: re.Match[str] | None = re.search(pattern=r"(?<=_p)\d+", string=Artwork_File);
 					pixiv_sids: str | None = pixiv_sid[0] if (pixiv_sid) else None;
-					if (not pixiv_sids): Log.Error(f"{Source[0]}/{Character_Name}/{Character_Tag}/{Artwork_File} → IGNORED | Invalid Pixiv Sub ID."); continue;
+					if (not pixiv_sids): Invalids["Invalid_sID"].append(Artwork_Full); Log.Error(f"{Artwork_Full} → IGNORED | Invalid Pixiv Sub ID."); continue;
 					Pixiv_sID = int(pixiv_sids);
 					del pixiv_sid; del pixiv_sids;
 
 					Log.Debug(f"{Source[0]}/{Character_Name}/{Character_Tag}/{Pixiv_ID}/{Pixiv_sID} ...");
 					Artwork: dict[str | int, Any] | None = Fetch_Artwork(Pixiv_ID);
-					if (not Artwork): Log.Error(f"{Source[0]}/{Character_Name}/{Character_Tag}/{Artwork_File} → IGNORED | Could not fetch Artwork Details."); continue;
-					if (not Artwork["Fetched"]): Log.Error(f"{Source[0]}/{Character_Name}/{Character_Tag}/{Artwork_File} → IGNORED | Artwork no longer exists."); continue;
-					if (Pixiv_sID > (len(Artwork["Images"]) - 1)): Log.Error(f"{Source[0]}/{Character_Name}/{Character_Tag}/{Artwork_File} → IGNORED | Pixiv_sID is larger than proxied images: {Pixiv_sID}"); continue;
-
+					if (not Artwork): Log.Error(f"{Artwork_Full} → IGNORED | Could not fetch Artwork Details."); continue;
+					if (not Artwork["Fetched"]): Invalids["Deleted"].append(Artwork_Full); Log.Error(f"{Artwork_Full} → IGNORED | Artwork no longer exists."); continue;
+					if (Artwork["AI"]): Invalids["AI"].append(Artwork_Full); Log.Error(f"{Artwork_Full} → IGNORED | Artwork is AI!"); continue;
+					if (Pixiv_sID > (len(Artwork["Images"]) - 1)): Invalids["Larger_sID"].append(Artwork_Full); Log.Error(f"{Artwork_Full} → IGNORED | Pixiv_sID is larger than proxied images: {Pixiv_sID}"); continue;
 
 					Browser_Data[Source[0]][Character_Name][Character_Tag]["Artworks"].append(Artwork["Images"][Pixiv_sID]);
 					for Tag in Artwork["Tags"]: Browser_Data[Source[0]][Character_Name][Character_Tag]["Tags"].add(Tag);
@@ -151,5 +152,7 @@ def Misono() -> None:
 		);
 		Log.Awaited().OK();
 	except Exception as Except: Log.Awaited().EXCEPTION(Except); raise Except;
+
+	File.JSON_Write("Misono_Invalid.json", Invalids);
 
 if (__name__ == "__main__"): Misono();
