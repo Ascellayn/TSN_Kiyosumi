@@ -22,7 +22,7 @@ def Fetch_Artwork(Pixiv_ID: str, Attempt: int = 1) -> dict[str | int, Any] | Non
 	Log.Warning(f"GET | {URL} ...");
 	Response: httpx.Response = httpx.get(URL, headers=Headers);
 	if (Response.status_code != 200):
-		if (Attempt > 5): Log.Error(f"failed to communicate for over 10 times with the Phixiv API!"); return None;
+		if (Attempt > 32): Log.Error(f"failed to communicate for over 10 times with the Phixiv API!"); return None;
 		Log.Warning(f"Attempt N°{Attempt}: Rate Limited by Phixiv or API Down! Retrying in {Attempt * Attempt} seconds.\nStatus Code: {Response.status_code} | Content:\n{Response.content}");
 		Time.time.sleep(Attempt * Attempt);
 		return Fetch_Artwork(Pixiv_ID, Attempt + 1);
