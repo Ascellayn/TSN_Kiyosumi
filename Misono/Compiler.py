@@ -25,6 +25,7 @@ def HTML_Compiler(
 	else:
 		for Source in Browser_Data.keys():
 			for Character in Browser_Data[Source]:
+				Character_All.append(Character);
 				for Tag in Browser_Data[Source][Character]:
 					Source_Total += len(Browser_Data[Source][Character][Tag]["Artworks"]);
 
