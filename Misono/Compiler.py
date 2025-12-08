@@ -54,9 +54,15 @@ def HTML_Compiler(
 .replace("{Source_Description}", Fetch_Abstract(Source_Name) if (Source_Name) else "")\
 .replace("{Source_Total}", str(Source_Total))\
 .replace("{Source_Character}", ", ".join(Browser_Data[Source_Name].keys()) if (Source_Name) else "")\
-.replace("{Source_All}", ", ".join(Browser_Data.keys()))\
+.replace("{Source_All_Keywords}", ", ".join(Browser_Data.keys()))\
 .replace("{Source_Browser}", f"{Source_Name.replace(" ", "_")}/Browser.html" if (Source_Name) else "")\
 .replace("{Source_NameHTML}", f"{Source_Name.replace(" ", "_")}" if (Source_Name) else "")\
+\
+.replace("{Excluded_Count_Tag}", str(len(Exclude_Tag)))\
+.replace("{Excluded_Count_Character}", str(len(Exclude_Character)))\
+.replace("{Excluded_Count_Source}", str(len(Exclude_Source)))\
+\
+.replace("{Total_Characters}", str(len(Character_All)))\
 \
 .replace("{TSN_Misono}", "\n<br>\n".join(Embeds))\
 .replace("{Misono_Version}", Misono_Version)\

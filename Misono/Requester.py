@@ -7,12 +7,11 @@ def Fetch_Artwork(Pixiv_ID: str, Attempt: int = 1) -> dict[str | int, Any] | Non
 	}; URL: str = f"https://www.phixiv.net/api/info?id={Pixiv_ID}&language=en";
 
 	if (Pixiv_ID in Cache_JSON["Artworks"].keys()): Log.Debug(f"CACHED | {Pixiv_ID}"); return Cache_JSON["Artworks"][Pixiv_ID];
-	else: Cache_JSON["Artworks"][Pixiv_ID] = {};
 
 	if (Attempt == 1):
 		if (not Fetch_Valid(Pixiv_ID)):
 			Log.Warning(f"Pixiv Artwork of ID {Pixiv_ID} no longer exists!");
-			Cache_JSON["Artworks"][Pixiv_ID]["Fetched"] = None;
+			Cache_JSON["Artworks"][Pixiv_ID] = { "Fetched": None };
 
 			Log.Debug(f"CACHING | {Pixiv_ID} ...");
 			File.JSON_Write("Misono.cache", Cache_JSON, True);
@@ -65,7 +64,6 @@ def Fetch_Abstract(Tag: str, Attempt: int = 1) -> str:
 		"Contact-Information": "contact+tsn_misono@sirio-network.com",
 		"Cookie": Cookie if (Cookie) else "null"
 	}; URL: str = f"https://www.pixiv.net/ajax/search/tags/{Tag}?lang=en";
-	print(URL);
 
 	Log.Debug(f"GET {URL} ...");
 	Response: httpx.Response = httpx.get(URL, headers=Headers);
@@ -77,8 +75,6 @@ def Fetch_Abstract(Tag: str, Attempt: int = 1) -> str:
 	Log.Awaited().OK();
 
 	Log.Debug(f"CACHING | {Tag}");
-	print(Response.json());
-	print(Response.json()["body"]["pixpedia"]);
 	Cache_JSON["Abstracts"][Tag] = {
 		"Description": Response.json()["body"]["pixpedia"].get("abstract", "<i>No Pixpedia Abstract was found!</i>"),
 		"Fetched": Time.Get_Unix()
