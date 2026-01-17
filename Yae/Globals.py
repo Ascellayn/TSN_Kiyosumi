@@ -5,11 +5,11 @@ dotenv.load_dotenv();
 
 
 
-Misono_Version: str = "v0.9.4";
-Cache_JSON: dict[str | int, Any] = File.JSON_Read("Misono.cache", True);
+Yae_Version: str = "v0.9.4";
+Cache_JSON: dict[str | int, Any] = File.JSON_Read("Yae.cache", True);
 if (Cache_JSON == {}):
 	Cache_JSON = {
-		"Misono": {
+		"Yae": {
 			"Version": "v0.6",
 			"Updated": Time.Get_Unix()
 		},
@@ -25,7 +25,7 @@ Browser_Data: dict[str, Any] = {};
 # TSNA & Config Validation
 Log.Clear(); TSN_Abstracter.Require_Version((5,4,0));
 Config.Logger.File = False; #Config.Logger.Print_Level = 15;
-Log.Stateless(f"TSN Misono - {Misono_Version}");
+Log.Stateless(f"TSN Yae - {Yae_Version}");
 
 
 Log.Info("Loading and Validating Configuration...");
@@ -94,5 +94,5 @@ Log.Awaited().OK();
 
 if (not Cookie):
 	Log.Critical("A Pixiv Cookie was not defined in your .env! Abstracts may not get properly fetched.\n\
-TSN Misono will keep executing after 30 seconds. We however still heavily recommend to stop Misono to configure your Cookie.");
+TSN Yae will keep executing after 30 seconds. We however still heavily recommend to stop Yae to configure your Cookie.");
 	Time.time.sleep(30);

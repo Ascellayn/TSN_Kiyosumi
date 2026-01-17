@@ -1,10 +1,10 @@
-from Misono import *;
+from Yae import *;
 
 
 
 
 
-def Misono() -> None:
+def Yae() -> None:
 	# PoC Stash Seeker
 	T_Init: int = Time.Get_Unix();
 	Log.Info("Analyzing Stash...");
@@ -153,6 +153,6 @@ def Misono() -> None:
 		Log.Awaited().OK();
 	except Exception as Except: Log.Awaited().EXCEPTION(Except); raise Except;
 
-	File.JSON_Write("Misono_Invalid.json", Invalids);
+	File.JSON_Write("Yae_Invalid.json", Invalids);
 
-if (__name__ == "__main__"): Misono();
+if (__name__ == "__main__"): Yae();

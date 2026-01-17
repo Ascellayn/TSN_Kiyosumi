@@ -1,4 +1,4 @@
-import Misono.Globals as Globals;
+import Yae.Globals as Globals;
 
 def Pixiv_Artist(Artist_ID: str) -> str: return f"https://www.pixiv.net/en/users/{Artist_ID}";
 def Pixiv_Artwork(Artwork_ID: str) -> str: return f"https://www.pixiv.net/en/artworks/{Artwork_ID}";

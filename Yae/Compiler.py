@@ -1,6 +1,6 @@
-from Misono.Globals import *;
-from Misono.Requester import *;
-from Misono.Strings import *;
+from .Globals import *;
+from .Requester import *;
+from .Strings import *;
 
 
 
@@ -65,9 +65,9 @@ def HTML_Compiler(
 \
 .replace("{Total_Characters}", str(len(Character_All)))\
 \
-.replace("{TSN_Misono}", "\n<br>\n".join(Embeds))\
-.replace("{Misono_Version}", Misono_Version)\
-.replace("{Misono_Legal}", f"TSN Misono © 2025 Ascellayn | TSN License 2.1 - Strict")\
+.replace("{TSN_Yae}", "\n<br>\n".join(Embeds))\
+.replace("{Yae_Version}", Yae_Version)\
+.replace("{Yae_Legal}", f"TSN Yae © 2025 Ascellayn | TSN License 2.1 - Strict")\
 \
 \
 \

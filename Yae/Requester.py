@@ -1,9 +1,9 @@
-from Misono.Globals import *;
+from Yae.Globals import *;
 
 def Fetch_Artwork(Pixiv_ID: str, Attempt: int = 1) -> dict[str | int, Any] | None:
 	Headers: dict[str, str] = {
-		"User-Agent": f"TSN_Misono/{Misono_Version} Ascellayn/TSN_Misono",
-		"Contact-Information": "contact+tsn_misono@sirio-network.com"
+		"User-Agent": f"TSN_Yae/{Yae_Version} Ascellayn/TSN_Yae",
+		"Contact-Information": "contact+tsn_Yae@sirio-network.com"
 	}; URL: str = f"https://www.phixiv.net/api/info?id={Pixiv_ID}&language=en";
 
 	if (Pixiv_ID in Cache_JSON["Artworks"].keys()): Log.Debug(f"CACHED | {Pixiv_ID}"); return Cache_JSON["Artworks"][Pixiv_ID];
@@ -14,7 +14,7 @@ def Fetch_Artwork(Pixiv_ID: str, Attempt: int = 1) -> dict[str | int, Any] | Non
 			Cache_JSON["Artworks"][Pixiv_ID] = { "Fetched": None };
 
 			Log.Debug(f"CACHING | {Pixiv_ID} ...");
-			File.JSON_Write("Misono.cache", Cache_JSON, True);
+			File.JSON_Write("Yae.cache", Cache_JSON, True);
 			Log.Awaited().OK();
 
 			return None;
@@ -46,7 +46,7 @@ def Fetch_Artwork(Pixiv_ID: str, Attempt: int = 1) -> dict[str | int, Any] | Non
 
 	Log.Debug(f"CACHING | {Pixiv_ID} ...");
 	Cache_JSON["Artworks"][Pixiv_ID] = JSON;
-	File.JSON_Write("Misono.cache", Cache_JSON, True);
+	File.JSON_Write("Yae.cache", Cache_JSON, True);
 	Log.Awaited().OK();
 
 	return JSON;
@@ -60,8 +60,8 @@ def Fetch_Abstract(Tag: str, Attempt: int = 1) -> str:
 		Log.Debug(f"CACHED | {Tag}"); return Cache_JSON["Abstracts"][Tag]["Description"];
 
 	Headers: dict[str, str] = {
-		"User-Agent": f"TSN_Misono/{Misono_Version} Ascellayn/TSN_Misono",
-		"Contact-Information": "contact+tsn_misono@sirio-network.com",
+		"User-Agent": f"TSN_Yae/{Yae_Version} Ascellayn/TSN_Yae",
+		"Contact-Information": "contact+tsn_Yae@sirio-network.com",
 		"Cookie": Cookie if (Cookie) else "null"
 	}; URL: str = f"https://www.pixiv.net/ajax/search/tags/{Tag}?lang=en";
 
@@ -79,7 +79,7 @@ def Fetch_Abstract(Tag: str, Attempt: int = 1) -> str:
 		"Description": Response.json()["body"]["pixpedia"].get("abstract", "<i>No Pixpedia Abstract was found!</i>"),
 		"Fetched": Time.Get_Unix()
 	};
-	File.JSON_Write("Misono.cache", Cache_JSON, True);
+	File.JSON_Write("Yae.cache", Cache_JSON, True);
 	Log.Awaited().OK();
 
 	return Cache_JSON["Abstracts"][Tag]["Description"];
@@ -88,8 +88,8 @@ def Fetch_Abstract(Tag: str, Attempt: int = 1) -> str:
 
 def Fetch_Valid(Pixiv_ID: str, Attempt: int = 1) -> bool:
 	Headers: dict[str, str] = {
-		"User-Agent": f"TSN_Misono/{Misono_Version} Ascellayn/TSN_Misono",
-		"Contact-Information": "contact+tsn_misono@sirio-network.com"
+		"User-Agent": f"TSN_Yae/{Yae_Version} Ascellayn/TSN_Yae",
+		"Contact-Information": "contact+tsn_Yae@sirio-network.com"
 	}; URL: str = f"https://www.pixiv.net/ajax/illust/{Pixiv_ID}?lang=en";
 
 	Log.Debug(f"GET | {URL} ...");

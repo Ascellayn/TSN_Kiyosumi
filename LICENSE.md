@@ -1,4 +1,4 @@
-## TSN Project Codename "Misono" © 2025 - Ascellayn | `TSN License 2.1 - Strict`
+## TSN Project Codename "Yae" © 2025 - Ascellayn | `TSN License 2.1 - Strict`
 
 **__The Sirio Network License 2.1 - Strict__**
 
