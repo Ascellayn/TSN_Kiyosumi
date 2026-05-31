@@ -6,7 +6,13 @@
 	modern problems require modern solutions.
 </p>
 
-<br> <br> <br> <br> <br>
+<br>
+
+| Main Browser | Character Browser | Artwork Browser |
+|--------------|-------------------|-----------------|
+| ![](./.media/Sources.png) | ![](./.media/Characters.png) | ![](./.media/Artworks.png) |
+
+<br>
 
 # How to use
 ##### 1: Download Repository
@@ -14,16 +20,19 @@
 - [TSN Abstracter v6.1+](https://github.com/Ascellayn/TSN_Abstracter)
 - `python3-httpx`
 - `python3-dotenv`
+- `python3-watchdog`
+
 ##### 3: Configure .env
 Create a `.env` file that should look something like this:
 ```.env
 pixivCookie="PHPSESSID=...;" # You can get this via your Cookies
 pixivUA="..." # THIS MUST BE THE SAME USER AGENT YOU USE WITH PIXIV
-discordWebhook="https://canary.discord.com/api/webhooks/.../..." # OPTIONAL
+discordWebhook="https://canary.discord.com/api/webhooks/.../..." # Optional
 
 Input="myStash"
 Output="Output"
 ```
+
 ##### 4: Configure Exclusions (Optional)
 Create a `Exclusions.json` file that should look something like this:
 ```json
@@ -34,8 +43,18 @@ Create a `Exclusions.json` file that should look something like this:
 }
 ```
 Note: This file is automatically created when Kiyosumi is launched.
+
 ##### 5: is cooking time
-Run inside a terminal `python3 TSN_Kiyosumi.py` in the same directory as where you downloaded the Kiyosumi Repository.
+Run inside a terminal `python3 TSN_Kiyosumi.py` in the same directory as where you downloaded the Kiyosumi Repository.  
+
+<br>
+
+
+<h6 align="center">Kiyosumi supports sending messages through Discord Webhooks to automatically post whenever a server event occurs.</h6>
+<p align="center">If you've configured the `discordWebhook` environment variable correctly, messages such as these will show up.</p>
+<p align="center">
+	<img align="center" src="./.media/WebHook.png" alt="Kiyosumi Banner">
+</p>
 
 
 <br>

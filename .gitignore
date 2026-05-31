@@ -1,7 +1,7 @@
 .env
 Exclusions.json
 
-ilikeyaemiko/
+Input/
 Output/
 Logs/
 
@@ -11,3 +11,4 @@ lastlaunch.unix
 
 __pycache__/
 *.pyc
+DEBUG.json

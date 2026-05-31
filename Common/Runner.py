@@ -5,7 +5,7 @@ import re;
 
 
 
-def Stash() -> None:
+def Stash() -> tuple[int, int]:
 	t_init: int = Time.Get_Unix();
 	Log.Info(f"Sprouting a tree from the stash...");
 	TREE: File.Folder_Tree = File.Tree(INPUT);
@@ -143,3 +143,5 @@ def Stash() -> None:
 	Log.Info(f"Writing to disk Kiyosumi Cache...");
 	File.JSON_Write("Kiyosumi.cache", KiyoCache, True);
 	Log.Awaited().OK();
+
+	return TOTAL_allArtworks, TOTAL_allexArtworks;

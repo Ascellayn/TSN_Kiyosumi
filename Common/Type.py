@@ -19,7 +19,7 @@ class pxURLs(TypedDict):
 
 
 class pxPage(TypedDict):
-	urls: pxURLs
+	urls: pxURLs;
 	width: int;
 	height: int;
 
@@ -40,7 +40,7 @@ class pxTag(TypedDict):
 
 
 class pxTags(TypedDict):
-	tags: list[pxTag]
+	tags: list[pxTag];
 
 
 
