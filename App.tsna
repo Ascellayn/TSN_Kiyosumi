@@ -7,6 +7,6 @@
 	"License_Year": "2025-2026",
 	"Codename": "TSN_Kiyosumi",
 	"Branch": "Azure",
-	"Version": [1,0,0],
+	"Version": [1,0,1],
 	"TSNA": [6,1,0]
 }
