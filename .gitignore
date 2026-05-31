@@ -8,3 +8,6 @@ Logs/
 Kiyosumi.cache
 Invalids.json
 lastlaunch.unix
+
+__pycache__/
+*.pyc
