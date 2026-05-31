@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html Theme="Light" lang="en">
+	<head>
+		<title>{Character.Name} ({Character.Tag}) - {Character.Source} | Ascellayn's Artwork Stash</title>
+		<!-- Misc-->
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="height=device-height, width=device-width, initial-scale=0.75"/>
+		<!-- External -->
+		<script>
+			const TSNJS_Components = ["Navigation", ["Background", "Black"]];
+			const TSNJS_Copyright = "Kiyosumi © (2025-2026) - Ascellayn | TSN License 2.2 - Universal";
+		</script>
+		<link rel="stylesheet" href="https://css.sirio-network.com">
+		<link rel="stylesheet" href="https://css.sirio-network.com/project/kiyosumi">
+		<script type="module" src="https://js.sirio-network.com"></script>
+
+		<!-- SEO -->
+		<meta content="Ever wondered what kind of artworks of {Character.Name} (well the {Character.Tag} ones) Ascellayn has saved? Well check this page out!" name="description"/>
+		<meta content="Ascellayn" name="author"/>
+		<meta content="The Sirio Network, Sirio Network, TSN, Ascellayn, {Character.Tags}" name="keywords"/>
+		<!-- Embed -->
+		<meta content="{Character.Name} ({Character.Tag}) - {Character.Source} | Ascellayn's Artwork Stash" property="og:title"/>
+		<meta content="Ever wondered what kind of artworks of {Character_Name} (well the {Character_Tag} ones) Ascellayn has saved? Well check this page out!" property="og:description"/>
+		<meta content="{Character.Image}" property="og:image"/>
+		<meta content="#FFFAFF" data-react-helmet="true" name="theme-color"/>
+		<meta name="twitter:card" content="summary_large_image"/>
+	</head>
+	<body>
+		<div id="Background"></div>
+		<div id="Floating"></div>
+		<div id="Root">
+			<div id="Base">
+				<div class="Contain_Themed">
+					<div class="Flex_Start">
+						<img style="max-width: 128px;" class="Image" src="{Character.Image}">
+						<div>
+							<h1>{Character.Name} ({Character.Tag}) Artworks</h1>
+							<p>{Character.Abstract}</p>
+							<div class="Quote Cyan">
+								<p>A grand total of {Character.Total} {Character.Tag} Artworks have been stashed.</p>
+							</div>
+						</div>
+					</div>
+					<spacer></spacer>
+					<div class="Flex_Center">
+						<a style="max-width: 45%;" class="Button" href="../browse.html"><h4>Return to all {Character.Source} Artworks</h4></a>
+						<a style="max-width: 45%;" class="Button" href="../../browse.html"><h4>Return to all Artworks</h4></a>
+					</div>
+				</div>
+				<br>
+<div class="Flex_Grid Contain_Themed">
+{Artwork.Embeds}
+</div>
+			</div>
+		</div>
+	</body>
+</html>

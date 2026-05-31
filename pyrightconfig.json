@@ -1,0 +1,5 @@
+{
+	"reportWildcardImportFromLibrary": "none",
+	"reportMissingTypeStubs": "none",
+	"reportUnusedImport": "none"
+}

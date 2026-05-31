@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html Theme="Light" lang="en">
+	<head>
+		<title>{Source.Name} | Ascellayn's Artwork Stash</title>
+		<!-- Misc-->
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="height=device-height, width=device-width, initial-scale=0.75"/>
+		<!-- External -->
+		<script>
+			const TSNJS_Components = ["Navigation", ["Background", "Pink"]];
+			const TSNJS_Copyright = "Kiyosumi © (2025-2026) - Ascellayn | TSN License 2.2 - Universal";
+			</script>
+		<link rel="stylesheet" href="https://css.sirio-network.com">
+		<link rel="stylesheet" href="https://css.sirio-network.com/project/kiyosumi">
+		<script type="module" src="https://js.sirio-network.com"></script>
+
+		<!-- SEO -->
+		<meta content="Ever wanting to roast the {Source.Name} Artworks Ascellayn likes? Well, got some news for ya." name="description"/>
+		<meta content="Ascellayn" name="author"/>
+		<meta content="The Sirio Network, Sirio Network, TSN, Ascellayn, {Character.Tags_Excluded}" name="keywords"/>
+		<!-- Embed -->
+		<meta content="{Source.Name} | Ascellayn's Artwork Stash" property="og:title"/>
+		<meta content="Ever wanting to roast the {Source.Name} artworks Ascellayn likes? Well, got some news for ya." property="og:description"/>
+		<meta content="./Banner.png" property="og:image"/>
+		<meta content="#FFFAFF" data-react-helmet="true" name="theme-color"/>
+		<meta name="twitter:card" content="summary_large_image"/>
+	</head>
+	<body>
+		<div id="Background"></div>
+		<div id="Floating"></div>
+		<div id="Root">
+			<div id="Base">
+				<div class="Contain_Themed">
+					<div class="Bannermage Bordered">
+						<img src="Banner.png">
+						<div Theme="Light" class="Shadow">
+							<h1>{Source.Name} Artworks</h1>
+							<p>{Source.Abstract}</p>
+							<br>
+							<p>A grand total of {Artwork.Total} artworks spanning across {Character.Total} Characters have been stashed.</p>
+							<p><i>However {Artwork.Total_Diff} of those artworks and {Character.Total_Diff} characters have been excluded, leaving only {Artwork.Total_Excluded} Artworks and {Character.Total_Excluded} Characters to be displayed here.</i></p>
+						</div>
+					</div>
+					<spacer></spacer>
+					<div class="Flex_Center">
+						<a style="max-width: 50%;" class="Button" href="../browse.html"><h4>Return to all Artworks</h4></a>
+					</div>
+				</div>
+				<br>
+<div class="Flex_Grid Contain_Themed">
+{Character.Embeds}
+</div>
+			</div>
+		</div>
+	</body>
+</html>

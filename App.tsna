@@ -1,0 +1,13 @@
+{
+	"Name": "Kiyosumi",
+	"Description": "A Pixiv-Based Artwork Stash Browser designed to be hosted online for the world to see.",
+	"Author": ["Ascellayn", "The Sirio Network"],
+	"Contributors": [],
+	"License": "TSN License 2.2 - Universal",
+	"License_Year": "2025-2026",
+	"Codename": "TSN_Kiyosumi",
+	"Branch": "Azure",
+	"Version": [1,0,0],
+	"Version_Suffix": "Beta",
+	"TSNA": [6,1,0]
+}

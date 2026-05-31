@@ -1,10 +1,10 @@
 .env
+Exclusions.json
 
 ilikeyaemiko/
 Output/
 Logs/
 
-Backups/
-Yae.cache
-Yae.uncached
-Yae_Invalid.json
+Kiyosumi.cache
+Invalids.json
+lastlaunch.unix
