@@ -31,6 +31,10 @@ discordWebhook="https://canary.discord.com/api/webhooks/.../..." # Optional
 
 Input="myStash"
 Output="Output"
+
+# If you do not include these, Kiyosumi will automatically assign the values by default provided in this example.
+Language="en"
+Buffer_Size="60" # Must be an int, time before buffer flushes.
 ```
 
 ##### 4: Configure Exclusions (Optional)

@@ -23,6 +23,7 @@ INPUT: str = requireEnv("Input");
 
 OUTPUT: str = requireEnv("Output", "Output");
 LANGUAGE: str = requireEnv("Language", "en");
+BUFFER_SIZE: int = int(requireEnv("Buffer_Size", "60"));
 
 DISCORD_WEBHOOK: str | None = os.getenv("discordWebhook");
 
