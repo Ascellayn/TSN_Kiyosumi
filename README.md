@@ -57,7 +57,7 @@ Run inside a terminal `python3 TSN_Kiyosumi.py` in the same directory as where y
 <h6 align="center">Kiyosumi supports sending messages through Discord Webhooks to automatically post whenever a server event occurs.</h6>
 <p align="center">If you've configured the `discordWebhook` environment variable correctly, messages such as these will show up.</p>
 <p align="center">
-	<img align="center" src="./.media/Webhook.png" alt="Kiyosumi Banner">
+	<img align="center" src="./.media/Webhook.gif" alt="Kiyosumi Banner">
 </p>
 
 
