@@ -138,6 +138,7 @@ class Stash_Handler(FileSystemEventHandler):
 
 
 
+		if (event.event_type == "deleted"): isExcluded = True;
 		self.Buffer.append(cast(Buffered_Artwork, {
 			"Event": event.event_type,
 			"Logged": logged,
