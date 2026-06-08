@@ -2,7 +2,7 @@
 <div id="{Artwork.PixID}_p{Artwork.SubID}" class="Flex_Between {Artwork.NSFW}">
 	<header><a href="{Artwork.URL}" target="_blank">
 		<{Artwork.Type} loop autoplay class="Image" src="{Artwork.Image}"></a></{Artwork.Type}>
-		<div class="Quote Red"><h3 class="Red"><code>NSFW</code></h3></div>
+		<q class="Red"><h3 class="Red"><code>NSFW</code></h3></q>
 	</header>
 	<article>
 		<spacer></spacer>
@@ -14,9 +14,9 @@
 		<div>{Artwork.Tags_URL}</div>
 		<br>
 		<footer class="Flex_Between">
-			<div class="Source">
+			<q class="Source">
 				<p>{Artwork.Date} | ID: {Artwork.PixID}_p{Artwork.SubID}</p>
-			</div>
+			</q>
 			<h4><code>{Artwork.Ext}</code></h4>
 		</footer>
 	</article>
